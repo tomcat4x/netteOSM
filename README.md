@@ -14,6 +14,7 @@ Usage:
 
 Presenter: 
 
+   <pre><code>
    protected function createComponentLeafletControl(){
         // create and configure component
         $ol = new \tc4x\leafletControl();
@@ -21,7 +22,9 @@ Presenter:
         $ol->setMarker(54.4188,11.1951,"<h5>Ferienwohung Sonstwas</h5>","Fewo mit Klo");
         return $ol;
     }	
+    </code></pre>
 
 Template: 
-
+<pre><code>
 {control leafletControl 54.4288,11.1929,16}
+</code></pre>
