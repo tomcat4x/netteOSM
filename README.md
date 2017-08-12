@@ -6,9 +6,9 @@ On the map it is possible to show or hide the different layers.
 
 <h2>Installation:</h2>
 
-Copy the lefalet folder somewhere in the Nette app folder. e.g. app/components
+Copy the /src/components/leaflet folder somewhere in the Nette app folder. e.g. app/components
 
-Copy the assets/leflet folder somewhere in your web-dirctory and link the leaflet.css and leaflet.js files in your latte template. 
+Copy the /src/assets/leaflet folder somewhere in your web-directory and link the leaflet.css and leaflet.js files in your latte template. 
 
 <h2>Usage:</h2>
 
