@@ -18,8 +18,8 @@ Presenter:
    protected function createComponentLeafletControl(){
         // create and configure component
         $ol = new \tc4x\leafletControl();
-        $ol->setMarker(54.4288,11.1931,"<h5>Ferienwohung Grosskopf</h5>","Fewo mit Klo2");
-        $ol->setMarker(54.4188,11.1951,"<h5>Ferienwohung Sonstwas</h5>","Fewo mit Klo");
+        $ol->setMarker(54.4288,11.1931,"Ferienwohung Grosskopf","Fewo mit Klo2");
+        $ol->setMarker(54.4188,11.1951,"Ferienwohung Sonstwas","Fewo mit Klo");
         return $ol;
     }	
     </code></pre>
