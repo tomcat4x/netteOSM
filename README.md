@@ -112,14 +112,21 @@ The marker class supports following properties:
 
 	public $markerColor; -> public function setMarkerColor($markerColor)
 	// Color of the marker. 
-   // Possible values are: red, darkred, lightred, orange, beige, green, darkgreen, lightgreen, blue, darkblue, lightblue,     purple, darkpurple, pink, cadetblue, white, gray, lightgray, black
+   	// Possible values are: red, darkred, lightred, orange, beige, green, darkgreen, lightgreen, 
+	blue, darkblue, lightblue, purple, darkpurple, pink, cadetblue, white, gray, lightgray, black
 
-   public $headline; -> 	public function setHeadline($headline)
-   // Headline text in popup window
+   	public $headline; -> public function setHeadline($headline)
+   	// Headline text in popup window
    
 	public $text; -> public function setText($text)
     // Text in popup window. Can include HTML
 });
 
+## Categories
 
+You can assign every marker to a category. The asinged categories are shown in layer top right in the map and you can
+show/hide every assigned category.
 
+$lfc->setMarker($marker,"Holiday home"); assigns the marker to the category "Holiday home". If a categorie does not exist, it will be created.
+
+$lfc->setMarker($marker); assigns the marker to the categorie "standard" which is not be shown in the category layer. 
