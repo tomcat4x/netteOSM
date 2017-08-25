@@ -1,0 +1,59 @@
+ <div id="map"></div>
+ 
+ <script type="text/javascript">
+	
+	
+	
+	var map = L.map('map', {
+    	center: [{$lon}, {$lat}],
+    	zoom: {$zoom},
+	});
+
+	var overlays = {};
+
+	
+	{foreach $layers as $key => $value}
+		
+		var {$key|noescape} = L.layerGroup();
+		
+		{foreach $value['markers'] as $marker}
+ 		
+ 		// if a icon is given
+ 		{if strlen($marker->icon)> 0}
+  			var markerIcon =  L.icon.glyph({
+    			iconUrl: {$basePath . '/assets/LeafletIcon/images/markers-soft.png'},
+    			markerColor: {$marker->markerColor},
+    			prefix: {$marker->prefix},
+    			glyph: {$marker->icon},
+    			glyphColor: {$marker->iconColor},
+  			});			
+			{if strlen($marker->text)> 0}
+				L.marker([{$marker->lon},{$marker->lat}], { icon: markerIcon}).bindPopup("<h5>{$marker->headline|noescape}</h5>{$marker->text|noescape}").addTo({$key|noescape});
+			{else}
+				L.marker([{$marker->lon},{$marker->lat}], { icon:markerIcon}).addTo({$key|noescape});
+			{/if}	
+		{else}
+			{if strlen($marker->text)> 0}
+				L.marker([{$marker->lon},{$marker->lat}]).bindPopup("<h5>{$marker->headline|noescape}</h5>{$marker->text|noescape}").addTo({$key|noescape});
+			{else}
+				L.marker([{$marker->lon},{$marker->lat}]).addTo({$key|noescape});
+			{/if}
+		{/if}
+		{/foreach}
+		map.addLayer({$key|noescape});
+		{if $key !== 'standard'}
+		overlays[{$value['name']}] ={$key|noescape};
+		{/if}
+	{/foreach}
+	
+	L.tileLayer('http://{ s }.tile.osm.org/{ z }/{ x }/{ y }.png', {
+    	attribution: '&copy; Frank Hess | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+
+	{if (array_key_exists("standard",$layers) && sizeof($layers) > 1) || !array_key_exists("standard",$layers) && sizeof($layers) > 0}
+	L.control.layers(null,overlays).addTo(map);
+	{/if}	
+
+
+
+</script>
