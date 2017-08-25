@@ -12,7 +12,19 @@ Copy the /src/assets/leaflet folder somewhere in your web-directory and link the
 
 Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link the Leaflet.Icon.Glyph.css and Leaflet.Icon.Glyph.js files in your latte template. 
 
+Add one or more of the following icon fonts to your web project:
+
+FontAwesome
+Mapkey Icons
+Ionicons
+Typicon
+.....
+
+Yo can use ervery other icon font you want. But you have to adapt the Leaflet.Icon.Glyph.css. 
+
 <a href='http://www.fh19.de/nette/leaflet' target='_new'>Demo</a>
+
+You can mix the icons of the fonts in a map.
 
 <h2>Usage:</h2>
 
@@ -24,7 +36,7 @@ Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link
         $lfc = new \tc4x\leafletMap\leafletControl();
         
         
-        
+        // add a fontawesome icon to the map
         $marker = $lfc->getMarker(54.4288,11.1931);
         $marker->setPrefix("fa");
         $marker->setIcon("bath");
@@ -35,6 +47,7 @@ Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link
         $lfc->setMarker($marker,"Holiday home");
         
         
+        //add a mapkey icon to the map
         $marker = $lfc->getMarker(54.411862714387,11.098079681396484);
         $marker->setIcon("camp_site");
         $marker->setPrefix("mki");
@@ -43,7 +56,8 @@ Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link
         $marker->setText("Camping Strukkamphuk");    
         $lfc->setMarker($marker,"Camping");   
         
-       $marker = $lfc->getMarker(54.40460440086583,11.14214229863137);
+        //add a mapkey icon to the map
+        $marker = $lfc->getMarker(54.40460440086583,11.14214229863137);
         $marker->setIcon("camp_site");
         $marker->setPrefix("mki");
         $marker->setMarkerColor("blue");
@@ -51,9 +65,10 @@ Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link
         $marker->setText("Camping Miramar");    
         $lfc->setMarker($marker,"Camping");            
         
-       $marker = $lfc->getMarker(54.405768414614855,11.177000999450684);
-        $marker->setIcon("camp_site");
-        $marker->setPrefix("mki");
+        //add a typicon icon to the map
+        $marker = $lfc->getMarker(54.405768414614855,11.177000999450684);
+        $marker->setPrefix("typcn");
+        $marker->setIcon("weather-cloudy");
         $marker->setMarkerColor("purple");
         $marker->setHeadline("Campground");
         $marker->setText("Camping Wulfener Hals - Riechey Freizeitanlagen");    
@@ -71,6 +86,40 @@ Copy the /src/assets/leafletIcon folder somewhere in your web-directory and link
 
 The parameter are: logitude, latitude, zomm level
 The map will be centered on given logitude and latitude
+
+## Properties
+
+$marker = $lfc->getMarker($lon,$lat);
+
+The marker class supports following properties:
+
+```js
+
+	$lon 
+	// Logitude set by constructor
+
+	$lan
+	// Langitude set by constructor
+
+	public $prefix; -> public function setPrefix($prefix)...
+	// the prefix of the icon font (typcn=Typicons, fa=Fontawesome, mki=Mapkey Icons...)
+
+	public $icon; -> public function setIcon($icon)...
+	// Icon that will be shown in the marker
+
+	public $iconColor; -> public function setIconColor($iconColor)
+	// Color of the icon (default = white)
+
+	public $markerColor; -> public function setMarkerColor($markerColor)
+	// Color of the marker. 
+   // Possible values are: red, darkred, lightred, orange, beige, green, darkgreen, lightgreen, blue, darkblue, lightblue,     purple, darkpurple, pink, cadetblue, white, gray, lightgray, black
+
+   public $headline; -> 	public function setHeadline($headline)
+   // Headline text in popup window
+   
+	public $text; -> public function setText($text)
+    // Text in popup window. Can include HTML
+});
 
 
 
